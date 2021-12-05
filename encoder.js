@@ -1,4 +1,4 @@
-function encoder(inputString , repeatCount) {
+export default function encoder(inputString , repeatCount) {
     let result = null;
 
     const pattern = /^[a-z]+$/;
@@ -15,7 +15,7 @@ function encoder(inputString , repeatCount) {
 
             if(foundIndex + repeatCount >= 25) {
                 
-                
+                // no idea for here 
 
             }else {
                 arr.push(alphabet[foundIndex+repeatCount])
@@ -24,11 +24,11 @@ function encoder(inputString , repeatCount) {
         })
         result = arr.join('');
 
-        console.log(result);
+        return result
 
     }else {
         return result = 'You can just put Lowercase letters';
     }
 }
 
-encoder("aby" , 3)
+// encoder("abd" , 3)
