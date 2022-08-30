@@ -12,38 +12,34 @@ const parvinEtesami = [
 ]
 
 
-export default function poetry(verse) {
-    let result = [];
+function poetry(verse) {
+    
+    // <initial set
 
-    const finalCharecter = verse.slice(-1)[0];
-    // 3 space must be between each hemistich
-    const space = '   ';
-    const find = verse.search(space);
-    const separation = [verse[find - 1] , finalCharecter];
+        const space = '   '; // 3 space must be between each hemistich
+        const find = verse.search(space);
+        const separateVerse = {
+            firstCheck : verse.trim().slice(-1)[0],
+            secondCheck : verse.trim()[find - 1]
+        }
+        
+    // initial set>
 
     // <query in poetryHub
-    let poetryHub = [];
 
-    parvinEtesami.map(item => {
-        poetryHub.push([item[0] , item])
-    })
+        let result = "شعری برای مشاعره یافت نشد.";
+
+        parvinEtesami.map(item => {
+            if (item[0] === separateVerse.firstCheck) result = item;
+            if (item[0] === separateVerse.secondCheck) result = item;
+        });
+
     // query in poetryHub>
 
-    // <Find best suggestion for verse
-        poetryHub.forEach(item => {
-            if(item[0] === separation[1]) {
-                result.push(item[1]);
-            }
-            if(item[0] === separation[0]) {
-                result.push(item[1]);
-            }
-        })
-    // Find best suggestion for verse>
+    return result
 
-    return result[0];
-}
+};
 
-
-// poetry("قضا، نیامده ما را ز باغ خواهد برد   نه میرویم بسودای خود، نه می‌آئیم")
+console.log(poetry("ز سر غیب کس آگاه نیست قصه مخوان   کدام محرم دل ره در این حرم دارد"));
 
 // model ^^^ (((3 spaces)))
